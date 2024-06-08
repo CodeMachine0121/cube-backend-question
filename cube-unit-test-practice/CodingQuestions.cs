@@ -1,11 +1,12 @@
 using System.Globalization;
 using FluentAssertions;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 
 namespace cube_unit_test_practice;
 
 [TestFixture]
-public class UnitTests
+public class CodingQuestions
 {
     [Test]
     public void should_be_ordered()
@@ -53,5 +54,28 @@ public class UnitTests
         }
 
         result.Should().Be("****-****-****-2345");
+    }
+
+    [Test]
+    public void should_print_data_with_general_type()
+    {
+        // only print in console so doesnt need to assert
+        PrinterClass<int>.PrintData(1);
+        PrinterClass<string>.PrintData("Hello"); 
+        PrinterClass<DateTime>.PrintData(DateTime.Now);
+    }
+}
+
+public static class PrinterClass<T>
+{
+    public static void PrintData(T data)
+    {
+        Console.Write("Data: ");
+        if (data is DateTime dateTime)
+        {
+           Console.WriteLine(dateTime.ToString("yyyy/MM/dd").Replace(".", "/"));
+        }
+
+        Console.WriteLine(data);
     }
 }
