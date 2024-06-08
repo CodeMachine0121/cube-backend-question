@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cube-unit-test-practice", "cube-unit-test-practice\cube-unit-test-practice.csproj", "{6FC07812-0603-41CF-9D5E-1628CB5F8613}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FC07812-0603-41CF-9D5E-1628CB5F8613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FC07812-0603-41CF-9D5E-1628CB5F8613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FC07812-0603-41CF-9D5E-1628CB5F8613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FC07812-0603-41CF-9D5E-1628CB5F8613}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
