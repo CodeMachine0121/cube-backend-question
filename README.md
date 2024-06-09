@@ -6,26 +6,35 @@
 - API 回傳以下金額資訊，請您將金額 * 利率0.33後，由大到小進行排序。 ( - 視為 0 )
    - string[] amountList = { "1.2", "1.4", "0.2", "-", "-0.005" };
 ```csharp
-var amountList = new List<string>()
-{
-    "1.2",
-    "1.4",
-    "0.2",
-    "-",
-    "-0.005"
-};
-
-var orderedAmountList = amountList.Select(x =>
-{
-    if (x == "-")
-    {
-        return 0;
-    }
-
-    return double.Parse(x, CultureInfo.InvariantCulture) * 0.33;
-}).OrderBy(x => x).ToList();
-
-orderedAmountList[0].Should().Be(-0.005 * 0.33);
+   var amountList = new List<string>()
+   {
+      "1.2",
+      "1.4",
+      "0.2",
+      "-",
+      "-0.005"
+   };
+   
+   var rate = 0.33;
+   
+   var orderedAmountList = amountList.Select(x =>
+   {
+      if (x == "-")
+      {
+          return 0;
+      }
+   
+      return double.Parse(x, CultureInfo.InvariantCulture) * rate;
+   }).OrderByDescending(x => x).ToList();
+   
+   orderedAmountList.Should().BeEquivalentTo(new List<double>()
+   {
+      1.4 * rate,
+      1.2 * rate,
+      0.2 * rate,
+      0 * rate,
+      -0.005 * rate
+   });
 ```
 
 ## Question2
