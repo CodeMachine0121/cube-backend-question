@@ -20,6 +20,8 @@ public class CodingQuestions
             "-0.005"
         };
 
+        var rate = 0.33;
+
         var orderedAmountList = amountList.Select(x =>
         {
             if (x == "-")
@@ -27,25 +29,34 @@ public class CodingQuestions
                 return 0;
             }
 
-            return double.Parse(x, CultureInfo.InvariantCulture) * 0.33;
-        }).OrderBy(x => x).ToList();
+            return double.Parse(x, CultureInfo.InvariantCulture) * rate;
+        }).OrderByDescending(x => x).ToList();
 
-        orderedAmountList[0].Should().Be(-0.005 * 0.33);
+        orderedAmountList.Should().BeEquivalentTo(new List<double>()
+        {
+            1.4 * rate,
+            1.2 * rate,
+            0.2 * rate,
+            0 * rate,
+            -0.005 * rate
+        });
     }
 
     [Test]
     public void should_hide_credit_card_number()
     {
         var creditCardNumber = "0123456789012345";
+
         var hiddenCreditCardNumberCharArray = creditCardNumber.ToCharArray()
             .Select((x, i) => i < creditCardNumber.Length - 4
                 ? '*'
                 : x).ToArray();
-        
+
         var hiddenCreditCardNumberString = new string(hiddenCreditCardNumberCharArray);
         var length = hiddenCreditCardNumberString.Length;
 
         var result = new string("");
+
         for (var i = 0; i < length; i++)
         {
             result += i % 4 == 0 && i != 0
@@ -61,7 +72,7 @@ public class CodingQuestions
     {
         // only print in console so doesnt need to assert
         PrinterClass<int>.PrintData(1);
-        PrinterClass<string>.PrintData("Hello"); 
+        PrinterClass<string>.PrintData("Hello");
         PrinterClass<DateTime>.PrintData(DateTime.Now);
     }
 }
