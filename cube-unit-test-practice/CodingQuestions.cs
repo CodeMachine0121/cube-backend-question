@@ -65,17 +65,3 @@ public class CodingQuestions
         PrinterClass<DateTime>.PrintData(DateTime.Now);
     }
 }
-
-public static class PrinterClass<T>
-{
-    public static void PrintData(T data)
-    {
-        Console.Write("Data: ");
-        if (data is DateTime dateTime)
-        {
-           Console.WriteLine(dateTime.ToString("yyyy/MM/dd").Replace(".", "/"));
-        }
-
-        Console.WriteLine(data);
-    }
-}
